@@ -22,4 +22,11 @@ public class ReaderEntity {
     @Column(name = "lasstName")
     private String lastName;
 
+    public ReaderEntity(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public ReaderEntity() {
+    }
 }
