@@ -1,5 +1,7 @@
 package ru.geekbrains.booksevice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,8 +19,9 @@ public class BookEntity {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "author")
     @ManyToOne
+    @JoinColumn(name = "author")
+    @JsonIgnoreProperties("books")
     private AuthorEntity author;
 
     public BookEntity(String title, AuthorEntity author) {

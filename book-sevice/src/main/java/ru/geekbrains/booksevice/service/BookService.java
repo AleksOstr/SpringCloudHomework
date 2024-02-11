@@ -7,6 +7,7 @@ import ru.geekbrains.booksevice.repository.AuthorRepository;
 import ru.geekbrains.booksevice.repository.BookRepository;
 import ru.geekbrains.booksevice.request.AuthorRequest;
 import ru.geekbrains.booksevice.request.BookRequest;
+import ru.geekbrains.booksevice.request.TitleRequest;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -32,8 +33,8 @@ public class BookService {
         return bookRepository.findAllByAuthor(author);
     }
 
-    public BookEntity findByTitle(String title) throws NoSuchElementException{
-        return bookRepository.findFirstByTitle(title).orElseThrow();
+    public BookEntity findByTitle(TitleRequest request) throws NoSuchElementException{
+        return bookRepository.findFirstByTitle(request.getTitle()).orElseThrow();
     }
 
     public BookEntity save(BookRequest request) {
@@ -41,12 +42,15 @@ public class BookService {
             AuthorEntity author = authorRepository.findFirstByFirstNameAndLastName(request.getAuthorFirstName(), request.getAuthorLastName())
                     .orElseThrow();
             BookEntity book = new BookEntity(request.getTitle(), author);
+            author.getBooks().add(book);
+            authorRepository.save(author);
             bookRepository.save(book);
             return book;
         } catch (NoSuchElementException e) {
             AuthorEntity author = new AuthorEntity(request.getAuthorFirstName(), request.getAuthorLastName());
-            authorRepository.save(author);
             BookEntity book = new BookEntity(request.getTitle(), author);
+            author.getBooks().add(book);
+            authorRepository.save(author);
             bookRepository.save(book);
             return book;
         }
