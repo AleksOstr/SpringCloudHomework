@@ -1,13 +1,19 @@
 spring:
   application:
     name: reader-service
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  sql:
+    init:
+      platform: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
 
 server:
   port: 8280

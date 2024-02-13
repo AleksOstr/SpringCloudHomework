@@ -3,9 +3,9 @@ package ru.gb.issuanceservice.provider;
 import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.gb.readerservice.model.ReaderEntity;
+import ru.gb.issuanceservice.model.ReaderEntity;
 
-import java.io.Reader;
+
 import java.util.List;
 
 @Component

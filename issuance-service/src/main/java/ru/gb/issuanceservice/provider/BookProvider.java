@@ -3,7 +3,7 @@ package ru.gb.issuanceservice.provider;
 import org.springframework.cloud.client.loadbalancer.reactive.ReactorLoadBalancerExchangeFilterFunction;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.geekbrains.booksevice.model.BookEntity;
+import ru.gb.issuanceservice.model.BookEntity;
 
 import java.util.List;
 
