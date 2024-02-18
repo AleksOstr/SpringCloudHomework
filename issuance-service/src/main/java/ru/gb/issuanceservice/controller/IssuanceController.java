@@ -6,6 +6,7 @@ import ru.gb.issuanceservice.model.IssuanceEntity;
 import ru.gb.issuanceservice.request.IssuanceRequest;
 import ru.gb.issuanceservice.request.ReaderRequest;
 import ru.gb.issuanceservice.sevice.IssuanceService;
+import ru.gb.timerstarter.Timer;
 
 import java.util.List;
 
@@ -19,18 +20,21 @@ public class IssuanceController {
         this.issuanceService = issuanceService;
     }
 
+    @Timer
     @GetMapping("/all")
     public ResponseEntity<List<IssuanceEntity>> findAll() {
         List<IssuanceEntity> issuances = issuanceService.findAll();
         return ResponseEntity.ok(issuances);
     }
 
+    @Timer
     @GetMapping("/by-reader")
     public ResponseEntity<List<IssuanceEntity>> findByReader(@RequestBody ReaderRequest request) {
         List<IssuanceEntity> issuances = issuanceService.findByReader(request);
         return ResponseEntity.ok(issuances);
     }
 
+    @Timer
     @PostMapping("/new")
     public ResponseEntity<IssuanceEntity> save(@RequestBody IssuanceRequest request) {
         IssuanceEntity issuance = issuanceService.save(request);
