@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @Slf4j
 public class TimerAspect {
 
-    @Pointcut("@@annotation(ru.gb.timerstarter.Timer)")
+    @Pointcut("@annotation(ru.gb.timerstarter.Timer)")
     public void methodPointcut() {
 
     }
