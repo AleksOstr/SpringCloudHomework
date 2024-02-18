@@ -21,3 +21,5 @@ eureka:
 server:
   port: 8180
 
+timer:
+  enabled: true
